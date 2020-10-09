@@ -20,7 +20,7 @@
 
     'price': 100,
     'currency': 'EUR',
-    'licence': 'OPL-1',
+    'license': 'OPL-1',
 
     # any module necessary for this one to work correctly
     'depends': ['base','hr_expense','product'],
@@ -49,5 +49,6 @@
                'static/description/images/hr_expenses_700.png',
                'static/description/images/main_screenshot.png',
                'static/description/images/schedule_expensify_700.png',
+               'static/description/images/install_module_700.png',
                'static/description/images/settings_700.png']
 }
