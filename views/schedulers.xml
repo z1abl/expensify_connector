@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="expensify_expenses_fetch_scheduler" model="ir.cron">
+        <field name="name">Fetch Expensify expenses</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">hours</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_expensify_entity"/>
+        <field name="code">model.import_from_expensify()</field>
+        <field name="state">code</field>
+        <field name="active" eval="False"/>
+    </record>
+</odoo>

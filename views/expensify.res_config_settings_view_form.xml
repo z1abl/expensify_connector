@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+       <record id="expensify_res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">expensify.res_config_settings_view_form</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority">16</field>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//*[@name='integration']" position="inside">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                    <div class="o_setting_left_pane">
+                        <field name="module_expensify_connector" />
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label string="Expensify" for="module_expensify_connector"/>
+                        <div class="text-muted">
+                            Synchronize expenses from Expensify
+                        </div>
+                        <div class="content-group" attrs="{'invisible': [('module_expensify_connector','=',False)]}" id="msg_module_expensify_connector">
+                        </div>
+                        <div id="msg_module_expensify_connector" position="replace">
+                            <div class="content-group" attrs="{'invisible': [('module_expensify_connector','=',False)]}">
+                                <div class="mt16 row">
+                                    <label for="expensify_user_id" string="User ID" class="col-3 col-lg-3 o_light_label"/>
+                                    <field name="expensify_user_id" nolabel="1"/>
+                                    <label for="expensify_secret" string="Secret" class="col-3 col-lg-3 o_light_label"/>
+                                    <field name="expensify_secret" password="True" nolabel="1"/>
+                                    <label for="expensify_start_date" string="Start date" class="col-3 col-lg-3 o_light_label"/>
+                                    <field name="expensify_start_date" nolabel="1" placeholder="e.g.2020-01-01"/>
+                                    <label for="expensify_create_hr_expenses" string="Create HR expenses" class="col-3 col-lg-3 o_light_label"/>
+                                    <field name="expensify_create_hr_expenses" nolabel="1"/>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+    		    </xpath>
+            </field>
+       </record>
+    </data>
+</odoo>

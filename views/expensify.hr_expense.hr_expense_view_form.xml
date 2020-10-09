@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+       <record id="expensify_hr_expense_hr_expense_view_form" model="ir.ui.view">
+            <field name="model">hr.expense</field>
+            <field name="priority">16</field>
+            <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='employee_id']" position="after">
+                    <field name="expensify"/>
+                </xpath>
+                <xpath expr="//field[@name='description']" position="before">
+                    <notebook attrs="{'invisible': [('expensify','=', False)]}">
+                        <page name="expensify_page" string="Expensify">
+                            <group>
+                                <group>
+                                    <field name="rel_expense_id"/>
+                                    <field name="rel_expense_date"/>
+                                    <field name="rel_expense_amount"/>
+                                    <field name="rel_currency"/>
+                                    <field name="rel_receipt_id"/>
+                                    <field name="rel_receipt_url" widget="url"/>
+                                    <field name="rel_account_email"/>
+                                    <field name="rel_comment"/>
+                                </group>
+                                <group>
+                                    <field name="rel_report"/>
+                                    <field name="rel_report_id"/>
+                                    <field name="rel_merchant"/>
+                                    <field name="rel_category"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+       </record>
+    </data>
+</odoo>
+
+

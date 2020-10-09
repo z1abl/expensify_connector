@@ -1,0 +1,102 @@
+<odoo>
+  <data>
+
+    <record id="expensify_tree" model="ir.ui.view">
+      <field name="name">Expensify</field>
+      <field name="model">expensify.entity</field>
+      <field name="arch" type="xml">
+        <tree string="Expensify">
+          <field name="expense_id"/>
+          <field name="expense_date"/>
+          <field name="expense_amount"/>
+          <field name="currency"/>
+          <field name="receipt_id"/>
+          <field name="receipt_url"/>
+          <field name="comment"/>
+          <field name="report"/>
+          <field name="merchant"/>
+          <field name="category"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="expensify_form" model="ir.ui.view">
+      <field name="name">Expensify</field>
+      <field name="model">expensify.entity</field>
+      <field name="arch" type="xml">
+        <form string="Expensify">
+          <group>
+            <field name="expense_id"/>
+            <field name="expense_date"/>
+            <field name="expense_amount"/>
+            <field name="currency"/>
+            <field name="receipt_id"/>
+            <field name="receipt_url"/>
+            <field name="comment"/>
+            <field name="report"/>
+            <field name="merchant"/>
+            <field name="category"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record id="expensify_action" model="ir.actions.act_window">
+      <field name="name">Expensify</field>
+      <field name="res_model">expensify.entity</field>
+    </record>
+
+    <record id="expensify_entity_action" model="ir.actions.act_window">
+      <field name="name">Expensify expenses</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">expensify.entity</field>
+      <field name="context">{}</field>
+      <field name="domain"></field>
+    </record>
+
+    <record id="expensify_category_action" model="ir.actions.act_window">
+      <field name="name">Expensify categories</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">expensify.category</field>
+      <field name="context">{}</field>
+      <field name="domain"></field>
+    </record>
+
+    <record id="expensify_report_action" model="ir.actions.act_window">
+      <field name="name">Expensify reports</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">expensify.report</field>
+      <field name="context">{}</field>
+      <field name="domain"></field>
+    </record>
+
+    <record id="expensify_merchant_action" model="ir.actions.act_window">
+      <field name="name">Expensify merchants</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">expensify.merchant</field>
+      <field name="context">{}</field>
+      <field name="domain"></field>
+    </record>
+
+    <record id="fetch_expensify_expenses_action" model="ir.actions.server">
+      <field name="name">Fetch expenses</field>
+      <field name="type">ir.actions.server</field>
+      <field name="model_id" ref="model_expensify_entity"/>
+      <field name="state">code</field>
+      <field name="code">model.import_from_expensify()</field>
+    </record>
+
+    <record id="expensify_fetch" model="ir.ui.menu" >
+     <field name="name">Fetch expenses</field>
+     <field name="groups_id" eval="[(6, 0, [ref('hr_expense.group_hr_expense_manager'),ref('hr.group_hr_manager')])]"/>
+    </record>
+
+    <menuitem id="expensify_menu" name="Expensify" sequence="10" action="expensify_action" parent="hr_expense.menu_hr_expense_root"/>
+     <menuitem id="expensify_entities" name="Expenses" sequence="1" action="expensify_entity_action" parent="expensify_menu"/>
+     <menuitem id="expensify_category" name="Categories" sequence="2" action="expensify_category_action" parent="expensify_menu"/>
+     <menuitem id="expensify_report" name="Reports" sequence="3" action="expensify_report_action" parent="expensify_menu"/>
+     <menuitem id="expensify_merchant" name="Merchants" sequence="4" action="expensify_merchant_action" parent="expensify_menu"/>
+     <menuitem id="expensify_fetch" name="Fetch expenses" sequence="5" action="fetch_expensify_expenses_action" parent="expensify_menu"/>
+
+  </data>
+</odoo>
